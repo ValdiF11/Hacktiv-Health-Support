@@ -79,7 +79,7 @@ class patientController {
 
   static async postHelath(req, res) {
     try {
-      const { PatientId, HealtId } = req.params;
+      const { PatientId } = req.params;
       let input = req.body;
       let markResult;
       if (+input.checkedResult > 120) {
