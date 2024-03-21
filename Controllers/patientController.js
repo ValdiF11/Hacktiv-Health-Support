@@ -26,7 +26,8 @@ class patientController {
   }
   static async showMedical(req, res) {
     try {
-      const patientId = req.params.patientId;
+      const input = req.params.PatientsId;
+      console.log(input);
       const patients = await Patient.findAll({
         include: [
           {
@@ -39,11 +40,9 @@ class patientController {
             ],
           },
         ],
-        where: {
-          id: patientId,
-        },
       });
-      res.render("showTableMedical", { patients: patients });
+      console.log(patients);
+      res.render("showTableMedical", { patients });
     } catch (error) {
       console.log(error);
       res.send(error);
