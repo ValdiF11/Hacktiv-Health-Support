@@ -13,7 +13,7 @@ app.use(
     cookie: { secure: true, sameSite: true },
   })
 );
-app.use(require("./Routers"));
+app.use(require("./Routers/router"));
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
