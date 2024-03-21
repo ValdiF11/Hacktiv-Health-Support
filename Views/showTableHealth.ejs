@@ -18,12 +18,12 @@
         </tr>
       </thead>
       <tbody>
-        <% if (data[0]) { %> <% data[0].forEach(element => { %>
+        <% if (data) { %> <% data.forEach(element => { %>
         <tr>
           <td><%= element.checkedDate %></td>
           <td><%= element.checkedResult %></td>
           <td><%= element.mark %></td>
-          <td><%= element.fee %></td>
+          <td><%= element.Fee %></td>
           <td>
             <a href="<%= element.id %>/delete" class="btn btn-light border-danger" style="color: red">Delete</a>
           </td>

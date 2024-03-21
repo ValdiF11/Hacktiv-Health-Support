@@ -14,12 +14,14 @@ class patientController {
     try {
       let { PatientId } = req.params;
       const { appointmentDate, DoctorsId } = req.body;
+      let find = await Patient.findAll({ where: { UsersId: PatientId } });
+      find = find[0];
       let data = await DoctorPatient.create({
-        PatientsId: PatientId,
+        PatientsId: find.id,
         appointmentDate: appointmentDate,
         DoctorsId: DoctorsId,
         status: false,
-        Note: "",
+        Note: "you are not healthy",
         Fee: 50000,
       });
       console.log(data);
@@ -56,8 +58,10 @@ class patientController {
   static async showHealth(req, res) {
     try {
       let { PatientId } = req.params;
+      let find = await Patient.findAll({ where: { UsersId: PatientId } });
+      find = find[0];
       let data = await HealthParameter.findAll({
-        where: { PatienstId: PatientId },
+        where: { PatientsId: find.id },
       });
       console.log(data);
       res.render("showTableHealth", { data, PatientId });
@@ -100,14 +104,17 @@ class patientController {
       } else {
         markResult = "low blood pressure";
       }
-      let data = HealthParameter.create({
+      let find = await Patient.findAll({ where: { UsersId: PatientId } });
+      find = find[0];
+      let data = await HealthParameter.create({
         checkedDate: input.checkedDate,
         checkedResult: input.checkedResult,
         mark: markResult,
-        fee: 25000,
+        Fee: 25000,
+        PatientsId: find.id,
       });
       data.save();
-      res.redirect(`patients/${PatientId}/showHealth`);
+      res.redirect(`/patients/${PatientId}/showHealth`);
       r;
     } catch (error) {
       console.log(error);
