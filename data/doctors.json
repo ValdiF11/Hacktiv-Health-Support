@@ -5,7 +5,7 @@
         "specialization": "Umum",
         "phoneNumber": "0821222222",
         "address": "jl.harapan mertua",
-        "UserId": 1
+        "UsersId": 1
     },
     {
         "id": 2,
@@ -13,7 +13,7 @@
         "specialization": "penyakit dalam",
         "phoneNumber": "08123456789",
         "address": "jl.jonggol",
-        "UserId": 2
+        "UsersId": 2
     },
     {
         "id": 3,
@@ -21,7 +21,7 @@
         "specialization": "bedah",
         "phoneNumber": "0897654321",
         "address": "jl.tpu barat",
-        "UserId": 3
+        "UsersId": 3
     },
     {
         "id": 4,
@@ -29,7 +29,7 @@
         "specialization": "kecantikan",
         "phoneNumber": "0899716162",
         "address": "jl.tpu barat",
-        "UserId": 4
+        "UsersId": 4
     },
     {
         "id": 5,
@@ -37,6 +37,6 @@
         "specialization": "kulit",
         "phoneNumber": "0872321232",
         "address": "jl.angkasa",
-        "UserId": 5
+        "UsersId": 5
     }
 ]

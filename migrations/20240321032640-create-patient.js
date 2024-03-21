@@ -24,6 +24,14 @@ module.exports = {
       phoneNumber: {
         type: Sequelize.STRING
       },
+      UsersId: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {
+          model: "Users",
+          key: "id"
+        },
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

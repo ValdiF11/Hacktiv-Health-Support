@@ -15,14 +15,19 @@ module.exports = {
       status: {
         type: Sequelize.BOOLEAN
       },
-      note: {
+      Note: {
         type: Sequelize.STRING
       },
-      fee: {
+      Fee: {
         type: Sequelize.INTEGER
       },
-      DoctorId: {
-        type: Sequelize.INTEGER
+      PatientsId: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {
+          model: "Patients",
+          key: "id",
+        }
       },
       createdAt: {
         allowNull: false,

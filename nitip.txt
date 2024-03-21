@@ -1,3 +1,3 @@
-npx sequelize-cli model:generate --name Patient --attributes name:string,gender:string,birthdate:string,address:string,phoneNumber:string
+npx sequelize-cli model:generate --name addColumn-DoctorPatient
 
 npx sequelize-cli model:generate --name DoctorPatient --attributes appointmentDate:date,status:boolean,note:string,fee:integer,DoctorId:integer

@@ -21,8 +21,13 @@ module.exports = {
       address: {
         type: Sequelize.STRING
       },
-      UserId: {
-        type:Sequelize.INTEGER
+      UsersId: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {
+          model: "Users",
+          key: "id"
+        },
       },
       createdAt: {
         allowNull: false,

@@ -9,9 +9,6 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      UserId: {
-        type: Sequelize.INTEGER
-      },
       checkedDate: {
         type: Sequelize.DATE
       },
@@ -23,6 +20,14 @@ module.exports = {
       },
       Fee: {
         type: Sequelize.INTEGER
+      },
+      PatientsId: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {
+          model: "Patients",
+          key:"id",
+        }
       },
       createdAt: {
         allowNull: false,
