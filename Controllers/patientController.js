@@ -9,21 +9,6 @@ class patientController {
             res.send(error);
         }
     }
-    static async postAppointment(req, res) {
-        try {
-            const { appointmentDate, DoctorsId, note } = req.body;
-            await DoctorPatient.create({
-                appointmentDate: appointmentDate,
-                DoctorsId: DoctorsId,
-                status: false,
-                note: note,
-                fee: 50000
-            });
-            res.redirect("/showFormAppointment");
-        } catch (error) {
-            res.send(error);
-        }
-    }
     static async showMedical(req, res) {
         try {
             const patientId = req.params.patientId;
@@ -48,6 +33,7 @@ class patientController {
             res.send(error);
         }
     }
+
     static async showHealth(req, res) {
         try {
             let data = HealthParameter.findAll();
@@ -64,16 +50,35 @@ class patientController {
                     id: HealthId,
                 },
             });
-            res.redirect(`showTableHealth/${PatientsId}`);
+            res.redirect(`patients/${PatientsId}`);
         } catch (error) {
             res.send(error);
         }
     }
-    static async addhealthParameter(req, res) {
+
+    static async postHelath(req, res) {
         try {
-            res.render('showAddHealth');
+            const { PatientsId, HealtId } = req.params;
+            let input = req.body;
+            let markResult;
+            if (+input.checkedResult > 120) {
+                markResult = "high blood pressure";
+            } else if (+input.checkedResult > 80) {
+                markResult = "normal blood pressure";
+            } else {
+                markResult = "low blood pressure";
+            }
+            let data = HealthParameter.create({
+                checkedDate: input.checkedDate,
+                checkedResult: input.checkedResult,
+                mark: markResult,
+                fee: 25000,
+            });
+            data.save();
+            res.redirect(`patients/${PatientsId}/showHealth`);
+            r;
         } catch (error) {
-            res.send(error)
+            console.log(error);
         }
     }
 }
