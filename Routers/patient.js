@@ -3,16 +3,16 @@ const bcrypt = require("bcryptjs");
 const patientController = require("../Controllers/PatientController");
 const patient = express.Router();
 
-doctor.get("/", patientController.showMedical);
+patient.get("/", patientController.showMedical);
 
-doctor.get("/appointment", patientController.showAppointment);
+patient.get("/appointment", patientController.showAppointment);
 
-doctor.post("/appointment", patientController.postAppointment);
+patient.post("/appointment", patientController.postAppointment);
 
-doctor.get("/showHealth", patientController.showHealth);
+patient.get("/showHealth", patientController.showHealth);
 
-doctor.get("/deleteHealth", patientController.deleteHealth);
+patient.get("/deleteHealth", patientController.deleteHealth);
 
-doctor.get("/addHealth", patientController.addHealth);
+patient.get("/addHealth", patientController.addHealth);
 
-doctor.post("/addHealth", patientController.postHelath);
+patient.post("/addHealth", patientController.postHelath);
