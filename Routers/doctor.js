@@ -10,10 +10,10 @@ doctor.get("/", DoctorsController.showTable);
 
 // edit status
 
-doctor.get("/status", DoctorsController.showStatus);
+doctor.get("/status", DoctorsController.editStatus);
 
 // add note
 
-doctor.get("/addNote", DoctorsController.showStatus);
+doctor.get("/addNote", DoctorsController.addNotePost);
 
 module.exports = doctor;
