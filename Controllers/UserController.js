@@ -98,7 +98,7 @@ class UsersController {
         UsersId: UsersId,
       });
       dataDoctor.save();
-      res.redirect("/");
+      res.redirect("/login");
     } catch (error) {
       console.log(error);
     }
@@ -110,7 +110,7 @@ class UsersController {
       let { UsersId } = req.params;
       let dataDoctor = await Doctor.create({ name, specialization, phoneNumber, address, UsersId });
       dataDoctor.save();
-      res.redirect("/");
+      res.redirect("/login");
     } catch (error) {
       console.log(error);
     }
