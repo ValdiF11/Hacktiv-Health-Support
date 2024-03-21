@@ -76,6 +76,33 @@ class patientController {
     } catch (error) {
       res.send(error);
     }
+<<<<<<< HEAD
+    static async postHelath(req, res) {
+        try {
+            const { PatientsId } = req.params;
+            let input = req.body;
+            let markResult;
+            if (+input.checkedResult > 120) {
+                markResult = "high blood pressure";
+            } else if (+input.checkedResult > 80) {
+                markResult = "normal blood pressure";
+            } else {
+                markResult = "low blood pressure";
+            }
+            let data = HealthParameter.create({
+                checkedDate: input.checkedDate,
+                checkedResult: input.checkedResult,
+                mark: markResult,
+                fee: 25000,
+            });
+            data.save();
+            res.redirect(`patients/${PatientsId}/showHealth`);
+            r;
+        } catch (error) {
+            console.log(error);
+        }
+    }
+=======
   }
 
   static async postHelath(req, res) {
@@ -103,6 +130,7 @@ class patientController {
       console.log(error);
     }
   }
+>>>>>>> e0be6270c2736c155b49391349158573adf2f839
 }
 
 module.exports = patientController;
