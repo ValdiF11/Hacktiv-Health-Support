@@ -25,6 +25,14 @@ module.exports = (sequelize, DataTypes) => {
     status: DataTypes.BOOLEAN,
     Note: DataTypes.STRING,
     Fee: DataTypes.INTEGER,
+    DoctorsId: {
+      allowNull:false,
+      type: DataTypes.INTEGER,
+      references: {
+        model: "Doctors",
+        key: "id"
+      },
+    },
     PatientsId: {
       allowNull: false,
       type: DataTypes.INTEGER,
