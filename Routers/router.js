@@ -1,9 +1,10 @@
 const express = require("express");
 const bcrypt = require("bcryptjs");
 const UsersController = require("../Controllers/UserController");
+const Controller = require("../Controllers/controller");
 const router = express.Router();
 
-// router.get("/", Controller.home);
+router.get("/", Controller.showHome);
 // get username register
 router.get("/register", UsersController.registerFrom);
 // post username register
@@ -34,6 +35,7 @@ router.use(function (req, res, next) {
 
 // router.use("/doctors", require("./doctor"));
 // router.use("/patients", require("./patient"));
+
 // router.get("/tabel", patientController.showPatient);
 
 module.exports = router;

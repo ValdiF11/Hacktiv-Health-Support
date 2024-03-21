@@ -45,9 +45,9 @@ class patientController {
                     id: HealthId
                 }
             });
-            res.redirect(`showTableHealth/${PatientsId}`);
+            res.redirect(`showTableHealth/${PatientsId}`)
         } catch (error) {
-            
+            res.send(error);
         }
     }
 }
