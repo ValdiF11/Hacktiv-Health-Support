@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table Health Parameter</title>
+</head>
+<body>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">check Date</th>
+                <th scope="col">check Result</th>
+                <th scope="col">Mark</th>
+                <th scope="col">Fee</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% data.forEach(element => { %>
+                <tr>
+                    <td><%= element.checkedDate %></td>
+                    <td><%= element.checkedResult %></td>
+                    <td><%= element.mark %></td>
+                    <td><%= element.fee %></td>
+                    <td></td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+    <%- include('bootstrap') %>
+</body>
+</html>

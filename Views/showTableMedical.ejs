@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table Medical CheckUp</title>
+</head>
+<body>
+ <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Appointment Date</th>
+                <th scope="col">Status</th>
+                <th scope="col">Note</th>
+                <th scope="col">Fee</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% data.forEach(element => { %>
+                <tr>
+                    <td><%= element.appointmentDate %></td>
+                    <td><%= element.status %></td>
+                    <td><%= element.note %></td>
+                    <td><%= element.fee %></td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</body>
+</html>

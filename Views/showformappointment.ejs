@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Form</title>
+</head>
+<body>
+    <h2>Appointment Form</h2>
+    <form action="/process_appointment" method="POST">
+        <label for="date">Select Date:</label>
+        <input type="date" id="date" name="date" required><br><br>
+
+        <label for="doctor">Select Doctor:</label>
+        <select id="doctor" name="doctor" required>
+            <option value="">Select Doctor</option>
+            <% doctors.forEach(function(doctor) { %>
+                <option value="<%= doctor.name %>"><%= doctor.name %></option>
+            <% }); %>
+        </select><br><br>
+
+        <input type="submit" value="Submit Appointment">
+    </form>
+</body>
+</html>
