@@ -17,34 +17,21 @@ module.exports = (sequelize, DataTypes) => {
       });
     }
   }
-<<<<<<< HEAD
-  DoctorPatient.init({
-    appointmentDate: DataTypes.DATE,
-    status: DataTypes.BOOLEAN,
-    Note: DataTypes.STRING,
-    Fee: DataTypes.INTEGER,
-    DoctorsId: {
-      allowNull:false,
-      type: DataTypes.INTEGER,
-      references: {
-        model: "Doctors",
-        key: "id"
-      },
-    },
-    PatientsId: {
-      allowNull: false,
-      type: DataTypes.INTEGER,
-      references: {
-        model: "Patients",
-        key: "id",
-      }
-=======
+
   DoctorPatient.init(
     {
       appointmentDate: DataTypes.DATE,
       status: DataTypes.BOOLEAN,
       Note: DataTypes.STRING,
       Fee: DataTypes.INTEGER,
+      DoctorsId: {
+        allowNull: false,
+        type: DataTypes.INTEGER,
+        references: {
+          model: "Doctors",
+          key: "id",
+        },
+      },
       PatientsId: {
         allowNull: false,
         type: DataTypes.INTEGER,
@@ -53,15 +40,6 @@ module.exports = (sequelize, DataTypes) => {
           key: "id",
         },
       },
-      DoctorsId: {
-        allowNull: false,
-        type: DataTypes.INTEGER,
-        references: {
-          model: "Patients",
-          key: "id",
-        },
-      },
->>>>>>> c70cc2d0985d720088889b96065f29389f5a8d7f
     },
     {
       sequelize,
