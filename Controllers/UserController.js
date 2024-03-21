@@ -15,14 +15,17 @@ class UsersController {
     try {
       const { username, password } = req.body;
       let user = await User.findAll({ where: { username } });
-      if (user.length > 0) {
-        let isValidPassowed = bcrypt.compareSync(password, user.password);
-        req.session.userId = user[0].dataValues.id;
+      let id = user[0].id;
+      console.log(id);
+      if (user) {
+        let isValidPassowed = bcrypt.compareSync(password, user[0].password);
+        console.log(isValidPassowed);
+        req.session.userId = id;
         if (isValidPassowed) {
-          if (user[0].dataValues.role === "doctor") {
-            res.redirect("/doctors");
+          if (user[0].role === "doctor") {
+            res.redirect(`/doctors/${id}`);
           } else {
-            res.redirect("/patients");
+            res.redirect(`/patients/${id}`);
           }
         } else {
           throw new Error("invalid username/password");
@@ -111,13 +114,6 @@ class UsersController {
       let { UsersId } = req.params;
       let dataDoctor = await Doctor.create({ name, specialization, phoneNumber, address, UsersId });
       dataDoctor.save();
-      const info = await transporter.sendMail({
-        from: '"Maddison Foo Koch 👻" <maddison53@ethereal.email>', // sender address
-        to: "bar@example.com, baz@example.com", // list of receivers
-        subject: "Hello ✔", // Subject line
-        text: "Hello world?", // plain text body
-        html: "<b>Hello world?</b>", // html body
-      });
       console.log("Message sent: %s", info.messageId);
       res.redirect("/login");
     } catch (error) {

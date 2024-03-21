@@ -13,6 +13,8 @@ patient.get("/showHealth", patientController.showHealth);
 
 patient.get("/deleteHealth", patientController.deleteHealth);
 
-patient.get("/addHealth", patientController.addHealth);
+patient.get("/addHealth", patientController.addhealthParameter);
 
 patient.post("/addHealth", patientController.postHelath);
+
+module.exports = patient;
