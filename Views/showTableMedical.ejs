@@ -17,14 +17,18 @@
             </tr>
         </thead>
         <tbody>
-            <% data.forEach(element => { %>
-                <tr>
-                    <td><%= element.appointmentDate %></td>
-                    <td><%= element.status %></td>
-                    <td><%= element.note %></td>
-                    <td><%= element.fee %></td>
-                </tr>
-            <% }) %>
+            <% patients.forEach(patient => { %>
+                <% patient.DoctorPatients.forEach(doctorPatient => { %>
+                    <tr>
+                        <td><%= patient.name %></td>
+                        <td><%= doctorPatient.Doctor.name %></td>
+                        <td><%= doctorPatient.appointmentDate %></td>
+                        <td><%= doctorPatient.status %></td>
+                        <td><%= doctorPatient.note %></td>
+                        <td><%= doctorPatient.fee %></td>
+                    </tr>
+                <% }); %>
+            <% }); %>
         </tbody>
     </table>
     <%- include('layouts/bootstrap') %>

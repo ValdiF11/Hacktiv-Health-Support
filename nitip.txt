@@ -1,3 +1,14 @@
 npx sequelize-cli model:generate --name addColumn-DoctorPatient
 
 npx sequelize-cli model:generate --name DoctorPatient --attributes appointmentDate:date,status:boolean,note:string,fee:integer,DoctorId:integer
+
+route doctor
+- awali route dengan /doctors
+- tampilkan tabel isinya medical checkup yang ditanganin
+- kasih tombol ok buat update status jadi true dan add note
+
+route patient
+- awali route dengan /patients
+- tampilkan form appointment yang isnya tanggal sama dokter yang dipilih
+- tampilkan tabel medikal checkup tapi cuma bisa liat
+- tampilkan tabel health parameter + delete

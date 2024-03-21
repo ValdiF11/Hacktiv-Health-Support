@@ -7,19 +7,16 @@
 </head>
 <body>
     <h2>Appointment Form</h2>
-    <form action="/process_appointment" method="POST">
+    <form action="/patients/:id" method="POST">
         <label for="date">Select Date:</label>
         <input type="date" id="date" name="date" required><br><br>
-
         <label for="doctor">Select Doctor:</label>
         <select id="doctor" name="doctor" required>
             <option value="">Select Doctor</option>
-            <% doctors.forEach(function(doctor) { %>
-                <option value="<%= doctor.name %>"><%= doctor.name %></option>
+            <% doctors.forEach(function(el) { %>
+                <option value="<%= el.fullDoctor %>"><%= el.fullDoctor %></option>
             <% }); %>
-        </select><br><br>
-
-        <input type="submit" value="Submit Appointment">
+        </select><br>
     </form>
     <%- include('layouts/bootstrap') %>
 </body>

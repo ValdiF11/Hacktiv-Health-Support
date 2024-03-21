@@ -1,7 +1,26 @@
+const { Doctor, Patient,DoctorPatient } = require("../models");
+
 class patientController {
-    static async showPatient(req, res) {
+    static async showAppointment(req, res) {
         try {
-            res.render('')
+            const doctors = await Doctor.findAll();
+            res.render('showformappointment', { doctors: doctors });
+        } catch (error) {
+            res.send(error);
+        }
+    }
+    static async showMedical(req, res) {
+        try {
+            const patients = await Patient.findAll({
+                include: [{
+                    model: DoctorPatient,
+                    include: [{
+                        model: Doctor,
+                        attributes: ['name'] 
+                    }]
+                }]
+            });
+            res.render('showTableMedical', { patients: patients });
         } catch (error) {
             res.send(error);
         }
