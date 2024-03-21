@@ -1,5 +1,6 @@
 const bcrypt = require("bcryptjs");
 const { User, Doctor, Patient } = require("../models");
+const nodemailer = require("nodemailer");
 
 class UsersController {
   static async loginForm(req, res) {
@@ -89,7 +90,7 @@ class UsersController {
       let input = req.body;
       console.log(input);
       let { UsersId } = req.params;
-      let dataDoctor = await Patient.create({
+      let dataPatients = await Patient.create({
         name: input.name,
         gender: input.gender,
         birthdate: input.birthdate,
@@ -97,7 +98,7 @@ class UsersController {
         address: input.address,
         UsersId: UsersId,
       });
-      dataDoctor.save();
+      dataPatients.save();
       res.redirect("/login");
     } catch (error) {
       console.log(error);
@@ -110,6 +111,14 @@ class UsersController {
       let { UsersId } = req.params;
       let dataDoctor = await Doctor.create({ name, specialization, phoneNumber, address, UsersId });
       dataDoctor.save();
+      const info = await transporter.sendMail({
+        from: '"Maddison Foo Koch 👻" <maddison53@ethereal.email>', // sender address
+        to: "bar@example.com, baz@example.com", // list of receivers
+        subject: "Hello ✔", // Subject line
+        text: "Hello world?", // plain text body
+        html: "<b>Hello world?</b>", // html body
+      });
+      console.log("Message sent: %s", info.messageId);
       res.redirect("/login");
     } catch (error) {
       console.log(error);
