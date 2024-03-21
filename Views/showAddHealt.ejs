@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Add Health</title>
-</head>
-<body>
-    <form>
-  <div class="mb-3">
-    <label for="checkedDate" class="form-label">checked Date</label>
-    <input type="date" class="form-control" id="checkedDate" name="checkedDate">
-  </div>
-  <div class="mb-3">
-    <label for="checkedResult" class="form-label">checked Result</label>
-    <input type="text" class="form-control" id="checkedResult" name="checkedResult">
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
-<%- include('layouts/bootstrap') %>
-</body>
+  </head>
+  <body>
+    <form action="" method="post">
+      <div class="mb-3">
+        <label for="checkedDate" class="form-label">checked Date</label>
+        <input type="date" class="form-control" id="checkedDate" name="checkedDate" />
+      </div>
+      <div class="mb-3">
+        <label for="checkedResult" class="form-label">checked Result</label>
+        <input type="text" class="form-control" id="checkedResult" name="checkedResult" />
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <%- include('layouts/bootstrap') %>
+  </body>
 </html>

@@ -36,6 +36,6 @@ router.use(function (req, res, next) {
 });
 
 router.use("/doctors/:DoctorId", require("./doctor"));
-router.use("/patients/:PatientId", require("./patient"));
+router.use("/patients/", require("./patient"));
 
 module.exports = router;

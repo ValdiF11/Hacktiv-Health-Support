@@ -1,36 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Table Health Parameter</title>
-</head>
-<body>
+  </head>
+  <body>
     <%- include('layouts/navbarafterLogin') %>
-    <table class="table table-striped"><br><br><br>
+    <div class="container text-center justify-content-center" style="padding-top: 80px">
+      <div style="padding-bottom: 60px">
+        <h1><strong>Medical Checkup Report</strong></h3>
+      </div>
+
+      <a class="btn btn-primary" href="/patients/<%= PatientId %>/appointment" role="button">Make an appointment</a>
+      <a class="btn btn-primary" href="/patients/<%= PatientId %>/showHealth" role="button">Show Health Parameter</a>
+      <a class="btn btn-primary" href="/patients/<%= PatientId %>/addHealth" role="button">Add Health Parameter</a>
+
+      <table class="table table-striped">
+        <br /><br /><br />
         <thead>
-            <tr>
-                <th scope="col">check Date</th>
-                <th scope="col">check Result</th>
-                <th scope="col">Mark</th>
-                <th scope="col">Fee</th>
-                <th scope="col">Action</th>
-            </tr>
+          <tr>
+            <th scope="col">check Date</th>
+            <th scope="col">check Result</th>
+            <th scope="col">Mark</th>
+            <th scope="col">Fee</th>
+            <th scope="col">Action</th>
+          </tr>
         </thead>
         <tbody>
-            <% patients.forEach(element => { %>
-                <tr>
-                    <td><%= element.checkedDate %></td>
-                    <td><%= element.checkedResult %></td>
-                    <td><%= element.mark %></td>
-                    <td><%= element.fee %></td>
-                    <td>
-                        <a href="<%= element.id %>/delete" class="btn btn-light border-danger" style="color: red;">Delete</a>
-                    </td>
-                </tr>
-            <% }) %>
+          <% patients.forEach(element => { %>
+          <tr>
+            <td><%= element.checkedDate %></td>
+            <td><%= element.checkedResult %></td>
+            <td><%= element.mark %></td>
+            <td><%= element.fee %></td>
+            <td>
+              <a href="<%= element.id %>/delete" class="btn btn-light border-danger" style="color: red">Delete</a>
+            </td>
+          </tr>
+          <% }) %>
         </tbody>
-    </table>
+      </table>
+    </div>
+
     <%- include('layouts/bootstrap') %>
-</body>
+  </body>
 </html>

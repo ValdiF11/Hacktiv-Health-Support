@@ -3,18 +3,18 @@ const bcrypt = require("bcryptjs");
 const patientController = require("../Controllers/PatientController");
 const patient = express.Router();
 
-patient.get("/", patientController.showMedical);
+patient.get("/:PatientId", patientController.showMedical);
 
-patient.get("/appointment", patientController.showAppointment);
+patient.get("/:PatientId/appointment", patientController.showAppointment);
 
-patient.post("/appointment", patientController.postAppointment);
+patient.post("/:PatientId/appointment", patientController.postAppointment);
 
-patient.get("/showHealth", patientController.showHealth);
+patient.get("/:PatientId/showHealth", patientController.showHealth);
 
-patient.get("/deleteHealth", patientController.deleteHealth);
+patient.get("/:PatientId/addHealth/", patientController.addhealthParameter);
 
-patient.get("/addHealth", patientController.addhealthParameter);
+patient.post("/:PatientId/addHealth/", patientController.postHelath);
 
-patient.post("/addHealth", patientController.postHelath);
+patient.get("/:PatientId/deleteHealth/:HealthId", patientController.deleteHealth);
 
 module.exports = patient;
