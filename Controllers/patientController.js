@@ -11,7 +11,11 @@ class patientController {
     }
     static async showMedical(req, res) {
         try {
+            const patientId = req.params.patientId;
             const patients = await Patient.findAll({
+                where: {
+                    id:patientId
+                },
                 include: [{
                     model: DoctorPatient,
                     include: [{
