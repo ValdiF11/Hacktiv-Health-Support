@@ -21,11 +21,66 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Patient.init({
-    name: DataTypes.STRING,
-    gender: DataTypes.STRING,
-    birthdate: DataTypes.STRING,
-    address: DataTypes.STRING,
-    phoneNumber: DataTypes.STRING,
+    name: {
+      allowNull:false,
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          msg:'name not-empty'
+        },
+        notNull: {
+          msg:'name not-null'
+        }
+      }
+    },
+    gender: {
+      allowNull:false,
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          msg:'gender not-empty'
+        },
+        notNull: {
+          msg:'gender not-null'
+        }
+      }
+    },
+    birthdate: {
+      allowNull:false,
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          msg: 'birthdate not-empty'
+        },
+        notNull: {
+          msg: 'birthdate not-null'
+        }
+      },
+    },
+    address: {
+      allowNull:false,
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          msg:'address not-empty'
+        },
+        notNull: {
+          msg:'address not-null'
+        }
+      },
+    },
+    phoneNumber: {
+      allowNull: false,
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          msg: 'phoneNumber not-empty'
+        },
+        notNull: {
+          msg: 'phoneNumber not-null'
+        }
+      },
+    },
     UsersId: {
       allowNull: false,
       type: DataTypes.INTEGER,
