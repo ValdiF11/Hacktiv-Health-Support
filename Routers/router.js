@@ -33,5 +33,6 @@ router.use((req, res, next) => {
 
 router.use("/doctors", require("./doctor"));
 router.use("/patients", require("./patient"));
+router.get("/tabel", patientController.showPatient);
 
 module.exports = router;

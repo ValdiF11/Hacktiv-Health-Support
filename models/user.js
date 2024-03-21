@@ -11,13 +11,61 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      User.hasOne(models.Patient, {
+        foreignKey: "UsersId",
+      });
+      User.hasOne(models.Doctor, {
+        foreignKey: "UsersId",
+      });
     }
   }
   User.init(
     {
-      username: DataTypes.STRING,
-      email: DataTypes.STRING,
-      password: DataTypes.STRING,
+      username: {
+        allowNull: false,
+        type: DataTypes.STRING,
+        validate: {
+          notEmpty: {
+            msg: "username not-empty",
+          },
+          notNull: {
+            msg: "username not-null",
+          },
+        },
+      },
+      email: {
+        allowNull: false,
+        type: DataTypes.STRING,
+        unique: true,
+        validate: {
+          notEmpty: {
+            msg: "email not-empty",
+          },
+          notNull: {
+            msg: "email not-null",
+          },
+          isEmail: {
+            msg: "Invalid email format",
+          },
+        },
+      },
+      password: {
+        allowNull: false,
+        type: DataTypes.STRING,
+        validate: {
+          notEmpty: {
+            msg: "password not-empty",
+          },
+          notNull: {
+            msg: "password not-null",
+          },
+          isPassword(value) {
+            if (value.length <= 8) {
+              throw new Error("Password length must be at least 8 charackter");
+            }
+          },
+        },
+      },
       role: DataTypes.STRING,
     },
     {

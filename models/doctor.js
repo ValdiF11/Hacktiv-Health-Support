@@ -11,13 +11,59 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Doctor.belongsToMany(models.Patient, {
+        through: models.DoctorPatient,
+        foreignKey: 'DoctorsId',
+      });
     }
   }
   Doctor.init({
-    name: DataTypes.STRING,
-    specialization: DataTypes.STRING,
-    phoneNumber: DataTypes.STRING,
-    address: DataTypes.STRING,
+    name: {
+      type: DataTypes.STRING,
+      allowNull:false,
+      validate: {
+        notEmpty: {
+          msg: 'name not-empty'
+        },
+        notNull: {
+          msg: 'name not-null'
+        }
+      }
+    },
+    specialization: {
+      type:DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: 'specialization not-empty'
+        },
+        notNull: {
+          msg: 'specialization not-null'
+        }
+      }
+    },
+    phoneNumber: {
+      type:DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: 'phone Number not-empty'
+        },
+        notNull: {
+          msg: 'phone Number not-empty'
+        }
+      }
+    },
+    address: {
+      allowNull: false,
+      type:DataTypes.STRING,
+      validate: {
+        msg: 'address not-empty'
+      },
+      notNull: {
+        msg: 'address not-null'
+      }
+    },
     UsersId: {
       allowNull:false,
       type:DataTypes.INTEGER,

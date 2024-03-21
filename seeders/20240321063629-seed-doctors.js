@@ -8,14 +8,14 @@ module.exports = {
       el.createdAt = el.updatedAt = new Date();
       return el;
     });
-    await queryInterface.bulkInsert('Doctors', data);
+    await queryInterface.bulkInsert('Doctors',data)
   },
 
   async down (queryInterface, Sequelize) {
     await queryInterface.bulkDelete('Doctors', null, {
       truncate: true,
       restartIdentity: true,
-      cascade:true,
-   });
+      cascade: true,
+    });
   }
 };
