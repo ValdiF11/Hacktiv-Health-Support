@@ -1,4 +1,4 @@
-const { Doctor, Patient,DoctorPatient } = require("../models");
+const { Doctor, Patient, DoctorPatient, HealthParameter } = require("../models");
 
 class patientController {
     static async showAppointment(req, res) {
@@ -20,13 +20,34 @@ class patientController {
                     model: DoctorPatient,
                     include: [{
                         model: Doctor,
-                        attributes: ['name'] 
+                        attributes: ['name']
                     }]
                 }]
             });
             res.render('showTableMedical', { patients: patients });
         } catch (error) {
             res.send(error);
+        }
+    }
+    static async showHealth(req, res) {
+        try {
+            let data = HealthParameter.findAll();
+            res.render('showTableHealth', { data });
+        } catch (error) {
+            res.send(error);
+        }
+    }
+    static async deleteHealth(req, res) {
+        try {
+            const { PatientsId, HealthId } = req.params;
+            await HealthParameter.destroy({
+                where: {
+                    id: HealthId
+                }
+            });
+            res.redirect(`showTableHealth/${PatientsId}`);
+        } catch (error) {
+            
         }
     }
 }
