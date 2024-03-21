@@ -11,7 +11,7 @@ app.use(
     secret: "keyboard cat",
     resave: false,
     saveUninitialized: false,
-    cookie: { secure: true, sameSite: true },
+    cookie: { secure: false, sameSite: true },
   })
 );
 app.use(require("./Routers/router"));

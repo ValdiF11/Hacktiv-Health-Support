@@ -25,6 +25,8 @@ router.post("/login", UsersController.postLogin);
 router.get("/logout", UsersController.logout);
 
 router.use(function (req, res, next) {
+  // console.log(req.session.userId);
+  // console.log(error);
   if (!req.session.userId) {
     const error = "please login first";
     res.redirect(`/login/error=${error}`);

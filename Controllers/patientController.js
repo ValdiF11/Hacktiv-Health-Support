@@ -28,9 +28,6 @@ class patientController {
     try {
       const patientId = req.params.patientId;
       const patients = await Patient.findAll({
-        where: {
-          id: patientId,
-        },
         include: [
           {
             model: DoctorPatient,
@@ -42,9 +39,13 @@ class patientController {
             ],
           },
         ],
+        where: {
+          id: patientId,
+        },
       });
       res.render("showTableMedical", { patients: patients });
     } catch (error) {
+      console.log(error);
       res.send(error);
     }
   }
