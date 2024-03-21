@@ -2,9 +2,10 @@ const { Doctor, Patient, DoctorPatient, HealthParameter } = require("../models")
 
 class patientController {
   static async showAppointment(req, res) {
-    try {
-      const doctors = await Doctor.findAll();
-      res.render("showformappointment", { doctors: doctors });
+      try {
+          let { PatientId } = req.params;
+      let doctors = await Doctor.findAll();
+      res.render("showformappointment", { doctors,PatientId });
     } catch (error) {
       res.send(error);
     }
@@ -96,7 +97,7 @@ class patientController {
         fee: 25000,
       });
       data.save();
-      res.redirect(`patients/${PatientsId}/showHealth`);
+      res.redirect(`patients/${PatientId}/showHealth`);
       r;
     } catch (error) {
       console.log(error);

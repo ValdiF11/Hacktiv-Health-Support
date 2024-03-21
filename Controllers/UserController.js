@@ -16,7 +16,7 @@ class UsersController {
       const { username, password } = req.body;
       let user = await User.findAll({ where: { username } });
       let id = user[0].id;
-      console.log(id);
+      // console.log(id);
       if (user) {
         let isValidPassowed = bcrypt.compareSync(password, user[0].password);
         console.log(isValidPassowed);

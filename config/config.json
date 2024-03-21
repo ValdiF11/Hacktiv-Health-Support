@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "postgres",
-    "password": "1710",
+    "password": "postgres",
     "database": "kitaSehatDB",
     "host": "localhost",
     "dialect": "postgres"
