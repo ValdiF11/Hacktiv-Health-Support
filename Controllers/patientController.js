@@ -2,33 +2,37 @@ const { Doctor, Patient, DoctorPatient, HealthParameter } = require("../models")
 
 class patientController {
   static async showAppointment(req, res) {
-      try {
-          let { PatientId } = req.params;
+    try {
+      let { PatientId } = req.params;
       let doctors = await Doctor.findAll();
-      res.render("showformappointment", { doctors,PatientId });
+      res.render("showformappointment", { doctors, PatientId });
     } catch (error) {
       res.send(error);
     }
   }
   static async postAppointment(req, res) {
     try {
-      const { appointmentDate, DoctorsId, note } = req.body;
-      await DoctorPatient.create({
+      let { PatientId } = req.params;
+      const { appointmentDate, DoctorsId } = req.body;
+      let data = await DoctorPatient.create({
+        PatientsId: PatientId,
         appointmentDate: appointmentDate,
         DoctorsId: DoctorsId,
         status: false,
-        note: note,
-        fee: 50000,
+        Note: "",
+        Fee: 50000,
       });
-      res.redirect("/showFormAppointment");
+      console.log(data);
+      data.save();
+      res.redirect(`/patients/${PatientId}`);
     } catch (error) {
       res.send(error);
+      console.log(error);
     }
   }
   static async showMedical(req, res) {
     try {
-      const input = req.params.PatientsId;
-      console.log(input);
+      let { PatientId } = req.params;
       const patients = await Patient.findAll({
         include: [
           {
@@ -43,7 +47,7 @@ class patientController {
         ],
       });
       console.log(patients);
-      res.render("showTableMedical", { patients });
+      res.render("showTableMedical", { patients, PatientId });
     } catch (error) {
       console.log(error);
       res.send(error);
@@ -51,15 +55,21 @@ class patientController {
   }
   static async showHealth(req, res) {
     try {
-      let data = HealthParameter.findAll();
-      res.render("showTableHealth", { data });
+      let { PatientId } = req.params;
+      let data = await HealthParameter.findAll({
+        where: { PatienstId: PatientId },
+      });
+      console.log(data);
+      res.render("showTableHealth", { data, PatientId });
     } catch (error) {
       res.send(error);
+      console.log(error);
     }
   }
   static async addhealthParameter(req, res) {
     try {
-      res.render("showAddHealth");
+      const { PatientId } = req.params;
+      res.render("showAddHealt", { PatientId });
     } catch (error) {
       res.send(error);
     }
