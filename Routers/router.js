@@ -33,9 +33,7 @@ router.use(function (req, res, next) {
   }
 });
 
-// router.use("/doctors", require("./doctor"));
-// router.use("/patients", require("./patient"));
-
-// router.get("/tabel", patientController.showPatient);
+router.use("/doctors/:DoctorId", require("./doctor"));
+router.use("/patients/:PatientId", require("./patient"));
 
 module.exports = router;
