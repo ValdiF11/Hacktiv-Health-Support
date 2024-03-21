@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "name": "dr.wanabud",
+        "specialization": "Umum",
+        "phoneNumber": "0821222222",
+        "address": "jl.harapan mertua",
+        "UserId": 1
+    },
+    {
+        "id": 2,
+        "name": "dr.cecilion",
+        "specialization": "penyakit dalam",
+        "phoneNumber": "08123456789",
+        "address": "jl.jonggol",
+        "UserId": 2
+    },
+    {
+        "id": 3,
+        "name": "dr.hantu",
+        "specialization": "bedah",
+        "phoneNumber": "0897654321",
+        "address": "jl.tpu barat",
+        "UserId": 3
+    },
+    {
+        "id": 4,
+        "name": "dr.soharto",
+        "specialization": "kecantikan",
+        "phoneNumber": "0899716162",
+        "address": "jl.tpu barat",
+        "UserId": 4
+    },
+    {
+        "id": 5,
+        "name": "dr.rojali",
+        "specialization": "kulit",
+        "phoneNumber": "0872321232",
+        "address": "jl.angkasa",
+        "UserId": 5
+    }
+]
