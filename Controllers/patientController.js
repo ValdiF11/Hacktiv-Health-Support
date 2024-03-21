@@ -77,7 +77,9 @@ class patientController {
       data.save();
       res.redirect(`patients/${PatientsId}/showHealth`);
       r;
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
   }
 }
 
