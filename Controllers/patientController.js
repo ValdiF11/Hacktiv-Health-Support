@@ -33,6 +33,7 @@ class patientController {
       res.send(error);
     }
   }
+
   static async showHealth(req, res) {
     try {
       let data = HealthParameter.findAll();
@@ -49,10 +50,34 @@ class patientController {
           id: HealthId,
         },
       });
-      res.redirect(`showTableHealth/${PatientsId}`);
+      res.redirect(`patients/${PatientsId}`);
     } catch (error) {
       res.send(error);
     }
+  }
+
+  static async postHelath(req, res) {
+    try {
+      const { PatientId, HealtId } = req.params;
+      let input = req.body;
+      let markResult;
+      if (+input.checkedResult > 120) {
+        markResult = "high blood pressure";
+      } else if (+input.checkedResult > 80) {
+        markResult = "normal blood pressure";
+      } else {
+        markResult = "low blood pressure";
+      }
+      let data = HealthParameter.create({
+        checkedDate: input.checkedDate,
+        checkedResult: input.checkedResult,
+        mark: markResult,
+        fee: 25000,
+      });
+      data.save();
+      res.redirect(`patients/${PatientsId}/showHealth`);
+      r;
+    } catch (error) {}
   }
 }
 
