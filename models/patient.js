@@ -1,7 +1,5 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+"use strict";
+const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Patient extends Model {
     /**
@@ -11,87 +9,90 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Patient.hasMany(models.HealtParameter, {
-        foreignKey: 'PatientsId'
+      Patient.hasMany(models.HealthParameter, {
+        foreignKey: "PatientsId",
       });
       Patient.belongsToMany(models.Doctor, {
         through: models.DoctorPatient,
-        foreignKey: 'PatientsId'
+        foreignKey: "PatientsId",
       });
     }
   }
-  Patient.init({
-    name: {
-      allowNull:false,
-      type: DataTypes.STRING,
-      validate: {
-        notEmpty: {
-          msg:'name not-empty'
+  Patient.init(
+    {
+      name: {
+        allowNull: false,
+        type: DataTypes.STRING,
+        validate: {
+          notEmpty: {
+            msg: "name not-empty",
+          },
+          notNull: {
+            msg: "name not-null",
+          },
         },
-        notNull: {
-          msg:'name not-null'
-        }
-      }
-    },
-    gender: {
-      allowNull:false,
-      type: DataTypes.STRING,
-      validate: {
-        notEmpty: {
-          msg:'gender not-empty'
+      },
+      gender: {
+        allowNull: false,
+        type: DataTypes.STRING,
+        validate: {
+          notEmpty: {
+            msg: "gender not-empty",
+          },
+          notNull: {
+            msg: "gender not-null",
+          },
         },
-        notNull: {
-          msg:'gender not-null'
-        }
-      }
-    },
-    birthdate: {
-      allowNull:false,
-      type: DataTypes.STRING,
-      validate: {
-        notEmpty: {
-          msg: 'birthdate not-empty'
+      },
+      birthdate: {
+        allowNull: false,
+        type: DataTypes.STRING,
+        validate: {
+          notEmpty: {
+            msg: "birthdate not-empty",
+          },
+          notNull: {
+            msg: "birthdate not-null",
+          },
         },
-        notNull: {
-          msg: 'birthdate not-null'
-        }
+      },
+      address: {
+        allowNull: false,
+        type: DataTypes.STRING,
+        validate: {
+          notEmpty: {
+            msg: "address not-empty",
+          },
+          notNull: {
+            msg: "address not-null",
+          },
+        },
+      },
+      phoneNumber: {
+        allowNull: false,
+        type: DataTypes.STRING,
+        validate: {
+          notEmpty: {
+            msg: "phoneNumber not-empty",
+          },
+          notNull: {
+            msg: "phoneNumber not-null",
+          },
+        },
+      },
+      UsersId: {
+        allowNull: false,
+        type: DataTypes.INTEGER,
+        references: {
+          model: "Users",
+          key: "id",
+        },
       },
     },
-    address: {
-      allowNull:false,
-      type: DataTypes.STRING,
-      validate: {
-        notEmpty: {
-          msg:'address not-empty'
-        },
-        notNull: {
-          msg:'address not-null'
-        }
-      },
-    },
-    phoneNumber: {
-      allowNull: false,
-      type: DataTypes.STRING,
-      validate: {
-        notEmpty: {
-          msg: 'phoneNumber not-empty'
-        },
-        notNull: {
-          msg: 'phoneNumber not-null'
-        }
-      },
-    },
-    UsersId: {
-      allowNull: false,
-      type: DataTypes.INTEGER,
-      references: {
-        model: "Users",
-        key: "id"
-      },
-    },
-  }, {
-    sequelize,
-    modelName: 'Patient',
-  });
+    {
+      sequelize,
+      modelName: "Patient",
+    }
+  );
   return Patient;
 };

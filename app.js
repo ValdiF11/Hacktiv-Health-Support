@@ -1,4 +1,5 @@
 const express = require("express");
+const bcrypt = require("bcryptjs");
 const app = express();
 const session = require("express-session");
 const port = 3000;
@@ -13,7 +14,7 @@ app.use(
     cookie: { secure: true, sameSite: true },
   })
 );
-app.use(require("./Routers"));
+app.use(require("./Routers/router"));
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);

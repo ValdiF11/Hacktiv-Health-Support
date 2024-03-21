@@ -44,23 +44,20 @@ class UsersController {
 
   static async postRegister(req, res) {
     try {
-      let { username, email, password } = req.body;
-      let mailHost = email.split("@")[1];
-      let role;
-      if (mailHost == "kitasehat.com") {
-        role = "doctor";
+      let input = req.body;
+      console.log(req.body);
+      let dataUser = await User.create({
+        username: input.username,
+        email: input.email,
+        password: input.password,
+        role: input.role,
+      });
+      dataUser.save();
+      let data = await User.findAll({ where: { username: input.username } });
+      if (input.role == "doctor") {
+        res.redirect(`/register/doctors/${data[0].id}`);
       } else {
-        role = "patient";
-      }
-      let dataUser = await User.Create({ username, email, password, role });
-      if (role === "doctor") {
-        dataUser.save();
-        let data = await User.findAll({ where: { username } });
-        res.redirect(`/register/doctors/${data[0].dataValues.id}`);
-      } else {
-        dataUser.save();
-        let data = await User.findAll({ where: { username } });
-        res.redirect(`/register/users/${data[0].dataValues.id}`);
+        res.redirect(`/register/users/${data[0].id}`);
       }
     } catch (error) {
       console.log(error);
@@ -70,7 +67,8 @@ class UsersController {
   static async registerDoctor(req, res) {
     try {
       const { error } = req.query;
-      res.render("auth-pages/formDoctor");
+      let { UsersId } = req.params;
+      res.render("auth-pages/formDoctor", { UsersId });
     } catch (error) {
       console.log(error);
     }
@@ -79,7 +77,8 @@ class UsersController {
   static async registerUser(req, res) {
     try {
       const { error } = req.query;
-      res.render("auth-pages/formUser");
+      let { UsersId } = req.params;
+      res.render("auth-pages/formPatient", { UsersId });
     } catch (error) {
       console.log(error);
     }
@@ -87,9 +86,17 @@ class UsersController {
 
   static async postRegUser(req, res) {
     try {
-      let { name, gender, birthdate, phoneNumber, address } = req.body;
+      let input = req.body;
+      console.log(input);
       let { UsersId } = req.params;
-      let dataDoctor = await Doctor.Create({ name, gender, birthdate, phoneNumber, address, UsersId });
+      let dataDoctor = await Patient.create({
+        name: input.name,
+        gender: input.gender,
+        birthdate: input.birthdate,
+        phoneNumber: input.phoneNumber,
+        address: input.address,
+        UsersId: UsersId,
+      });
       dataDoctor.save();
       res.redirect("/");
     } catch (error) {
@@ -101,7 +108,7 @@ class UsersController {
     try {
       let { name, specialization, phoneNumber, address } = req.body;
       let { UsersId } = req.params;
-      let dataDoctor = await Doctor.Create({ name, specialization, phoneNumber, address, UsersId });
+      let dataDoctor = await Doctor.create({ name, specialization, phoneNumber, address, UsersId });
       dataDoctor.save();
       res.redirect("/");
     } catch (error) {
