@@ -1,0 +1,37 @@
+[
+    {
+        "id":1,
+        "username": "umumtim",
+        "email":"umumtim@kitasehat.com",
+        "password":"umumtim",
+        "role":"doctor"
+    },
+    {
+        "id": 2,
+        "username": "dalamtim",
+        "email":"dalamtim@kitasehat.com",
+        "password": "dalamtim",
+        "role": "doctor"
+    },
+    {
+        "id": 3,
+        "username": "bedahtim",
+        "email": "bedahtim@kitasehat.com",
+        "password": "bedahtim",
+        "role": "doctor"
+    },
+    {
+        "id": 4,
+        "username": "kecantikantim",
+        "email": "kecantikan@kitasehat.com",
+        "password": "kecantikantim",
+        "role": "doctor"
+    },
+    {
+        "id": 5,
+        "username": "kulittim",
+        "email": "kulittim@kitasehat.com",
+        "password": "kulittim",
+        "role": "doctor"
+    }
+]
