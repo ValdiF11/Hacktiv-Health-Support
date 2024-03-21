@@ -10,18 +10,23 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       name: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       specialization: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       phoneNumber: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       address: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       UsersId: {
+        
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {

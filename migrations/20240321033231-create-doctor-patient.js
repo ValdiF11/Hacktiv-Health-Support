@@ -10,15 +10,19 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       appointmentDate: {
+        allowNull: false,
         type: Sequelize.DATE
       },
       status: {
+        allowNull: false,
         type: Sequelize.BOOLEAN
       },
       Note: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       Fee: {
+        allowNull: false,
         type: Sequelize.INTEGER
       },
       PatientsId: {

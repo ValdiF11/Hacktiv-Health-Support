@@ -10,15 +10,19 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       checkedDate: {
+        allowNull: false,
         type: Sequelize.DATE
       },
       checkedResult: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       mark: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       Fee: {
+        allowNull: false,
         type: Sequelize.INTEGER
       },
       PatientsId: {
