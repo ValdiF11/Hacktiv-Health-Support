@@ -35,20 +35,18 @@ class patientController {
   static async showMedical(req, res) {
     try {
       let { PatientId } = req.params;
-      const patients = await Patient.findAll({
+      let find = await Patient.findAll({ where: { UsersId: PatientId } });
+      find = find[0];
+      const patients = await DoctorPatient.findAll({
         include: [
           {
-            model: DoctorPatient,
-            include: [
-              {
-                model: Doctor,
-                attributes: ["name"],
-              },
-            ],
+            model: Doctor,
+            attributes: ["name"],
           },
         ],
+        where: { PatientsId: find.id },
       });
-      console.log(patients);
+      // res.send(patients);
       res.render("showTableMedical", { patients, PatientId });
     } catch (error) {
       console.log(error);

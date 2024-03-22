@@ -114,7 +114,6 @@ class UsersController {
       let { UsersId } = req.params;
       let dataDoctor = await Doctor.create({ name, specialization, phoneNumber, address, UsersId });
       dataDoctor.save();
-      console.log("Message sent: %s", info.messageId);
       res.redirect("/login");
     } catch (error) {
       console.log(error);

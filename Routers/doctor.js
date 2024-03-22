@@ -6,14 +6,14 @@ const DoctorsController = require("../Controllers/DoctorController");
 const doctor = express.Router();
 
 // show table appointment
-doctor.get("/", DoctorsController.showTable);
+doctor.get("/:DoctorId", DoctorsController.showTable);
 
 // edit status
 
-doctor.get("/status", DoctorsController.editStatus);
+doctor.get("/:DoctorId/status", DoctorsController.editStatus);
 
 // add note
 
-doctor.get("/addNote", DoctorsController.addNotePost);
+doctor.get("/:DoctorId/addNote", DoctorsController.addNotePost);
 
 module.exports = doctor;

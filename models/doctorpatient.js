@@ -7,6 +7,15 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
+
+    get convertStaus() {
+      if (this.status == true) {
+        return "sudah di Acc";
+      } else {
+        return "Belum di Acc";
+      }
+    }
+
     static associate(models) {
       // define association here
       DoctorPatient.belongsTo(models.Doctor, {

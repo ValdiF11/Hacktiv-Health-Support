@@ -20,23 +20,21 @@
         <br /><br /><br />
         <thead>
           <tr>
-            <th scope="col">check Date</th>
-            <th scope="col">check Result</th>
-            <th scope="col">Mark</th>
+            <th scope="col">Appointment Date</th>
+            <th scope="col">Status</th>
+            <th scope="col">Note</th>
             <th scope="col">Fee</th>
-            <th scope="col">Action</th>
+            <th scope="col">Doctor</th>
           </tr>
         </thead>
         <tbody>
           <% patients.forEach(element => { %>
           <tr>
-            <td><%= element.checkedDate %></td>
-            <td><%= element.checkedResult %></td>
-            <td><%= element.mark %></td>
-            <td><%= element.fee %></td>
-            <td>
-              <a href="<%= element.id %>/delete" class="btn btn-light border-danger" style="color: red">Delete</a>
-            </td>
+            <td><%= element.appointmentDate %></td>
+            <td><%= element.convertStaus %></td>
+            <td><%= element.Note %></td>
+            <td><%= element.Fee %></td>
+            <td><%= element.Doctor.name %></td>
           </tr>
           <% }) %>
         </tbody>
