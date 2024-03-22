@@ -14,8 +14,8 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Doctor.hasMany(models.DoctorPatient, {
-        foreignKey: "DoctorsId"
-      })
+        foreignKey: "DoctorsId",
+      });
       Doctor.belongsToMany(models.Patient, {
         through: models.DoctorPatient,
         foreignKey: "DoctorsId",
@@ -64,10 +64,12 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         type: DataTypes.STRING,
         validate: {
-          msg: "address not-empty",
-        },
-        notNull: {
-          msg: "address not-null",
+          notEmpty: {
+            msg: "address not-empty",
+          },
+          notNull: {
+            msg: "address not-null",
+          },
         },
       },
       UsersId: {
