@@ -67,6 +67,7 @@ class patientController {
       res.send(error);
       console.log(error);
     }
+    a;
   }
   static async addhealthParameter(req, res) {
     try {
